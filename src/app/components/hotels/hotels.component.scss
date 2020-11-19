@@ -22,7 +22,14 @@
         display: flex;
         flex-wrap: wrap;
         align-content: center;
-        padding: 5%;
+        padding: 1%;
+        box-sizing: border-box;
+        .hotel {
+            display: flex;
+            flex-basis: 25%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
     }
     .empty-search {
         flex-direction: column;

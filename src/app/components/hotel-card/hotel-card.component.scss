@@ -46,6 +46,6 @@ mat-card {
 }
 
 .mat-card:not([class*=mat-elevation-z]):hover {
-    box-shadow: 0 5px 16px 10px rgba(134, 97, 133, 0.68);
+    box-shadow: 0 5px 12px 2px rgba(134, 97, 133, 0.68);
     cursor: pointer;
 }
