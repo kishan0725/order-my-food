@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config(
+    $font-family: '"Dosis", sans-serif;',
+    $subheading-2: mat-typography-level(20px, 32px, 600)
+    );
+@include mat-core($custom-typography);
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Dosis', sans-serif !important;
+}

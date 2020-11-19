@@ -1,0 +1,32 @@
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #9c27b0;
+    .logo {
+        margin-left: 1%;
+    }
+    .user-profile {
+        color: whitesmoke;
+        display: flex;
+        padding: 0 1%;
+        align-items: center;
+        .greetings {
+            font-size: 23px;
+            margin-right: 10px;
+        }
+    }
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px)  {
+    .greetings {
+        font-size: 17px !important;
+    }
+    .logo {
+        width: 40% !important;
+    }
+}
