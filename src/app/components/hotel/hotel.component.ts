@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelService } from '../../services/hotel.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
@@ -10,6 +10,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export class HotelComponent implements OnInit {
 
+  public hotels = [];
   public hotel;
   public cartItems = [];
   public totalAmount = 0;
@@ -17,22 +18,23 @@ export class HotelComponent implements OnInit {
   public toggleMode = "over";
   public userName = '';
 
-  constructor(private _hotelService: HotelService, private route: ActivatedRoute, private router: Router) {
-    this.scrollTop();
-    [this.hotel] =  this._hotelService.getHotel(this.route.snapshot.paramMap.get('id'));
-    this.userName = this._hotelService.userName;
-    if(!this.userName) {
-      this.router.navigateByUrl("/hotels");
-    }
-  }
+  constructor(private _hotelService: HotelService, private route: ActivatedRoute, private router: Router) { }
 
   scrollTop = () => {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
-  addToMyCart = (menu) => {
+  getHotel = (id: number) => {
+    try {
+      return this.hotels.filter((hotel) => hotel.id == id);
+    }
+    catch(e) {
+      console.log(e);
+    }
+  }
 
+  addToMyCart = (menu) => {
     const cartItem = {
       "id": menu.id,
       "name": menu.name,
@@ -41,8 +43,46 @@ export class HotelComponent implements OnInit {
     }
 
     this.cartItems.push(cartItem);
-    this.cartItems = this.cartItems.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i); // removes duplicate menus
-    this.calculateAmount();
+
+    if (this.hasDuplicateItem()) {
+      this.ItemAlreadyExistModal(cartItem);
+      this.removeDuplicateItem();
+    }
+    else {
+      this.ItemAddedModal(menu);
+      this.calculateAmount();
+    }
+  }
+
+  hasDuplicateItem = () => {
+    let itemArray = this.cartItems.map(function(item){ return item.id });
+    let isDuplicate = itemArray.some(function(item, idx){ 
+      return itemArray.indexOf(item) != idx 
+    });
+    return isDuplicate;
+  }
+
+  removeDuplicateItem = () => {
+    this.cartItems = this.cartItems.filter((v,i,a) => a.findIndex(t=>(t.id === v.id))===i);
+  }
+
+  ItemAddedModal = (menu) => {
+    Swal.fire({
+      icon: 'success',
+      title: `${menu.name} added to your basket!`,
+      text: "Click on the basket icon at the top of the page to view your basket items.",
+      showConfirmButton: true,
+      confirmButtonColor: '#9c27b0'
+    });
+  }
+
+  ItemAlreadyExistModal = (menu) => {
+    Swal.fire({
+      icon: 'warning',
+      title: `${menu.name} already exist in your basket!`,
+      showConfirmButton: true,
+      confirmButtonColor: '#9c27b0'
+    });
   }
 
   removeItem = (cartItem) => {
@@ -98,6 +138,17 @@ export class HotelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
+    this.scrollTop();
+    this._hotelService.getHotelsList().subscribe((data) => {
+      this.hotels = data;
+      this.route.paramMap.subscribe((params: ParamMap) => {
+        [this.hotel] =  this.getHotel(parseInt(params.get('id')));
+      })
+    });
 
+    this.userName = this._hotelService.userName;
+    if(!this.userName) {
+      this.router.navigateByUrl("/hotels");
+    }
+  }
 }

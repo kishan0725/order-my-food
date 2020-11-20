@@ -3,7 +3,7 @@
     <div class="menu-bar">
         <h3 class="tagline">Choose your favourite one</h3>      
         <div class="filters">
-            <app-search-bar [hotelSearch]="hotelSearch" (searchQueryEvent)="searchQuery($event)"></app-search-bar>
+            <app-search-bar (searchQueryEvent)="searchQuery($event)"></app-search-bar>
             <app-dropdown [selectedValue]="selectedValue" [sortOptions]="sortOptions" (sortEvent)="sortHotels($event)"></app-dropdown>
         </div>
     </div>

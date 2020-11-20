@@ -7,7 +7,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  @Input() public hotelSearch;
+  // @Input() public hotelSearch;
+  public hotelSearch = '';
 
   @Output() searchQueryEvent = new EventEmitter();
 
@@ -15,6 +16,11 @@ export class SearchBarComponent implements OnInit {
 
   searchQuery = (query) => {
     this.searchQueryEvent.emit(query);
+  }
+
+  clearSearch = () => {
+    this.hotelSearch = '';
+    this.searchQueryEvent.emit(this.hotelSearch);
   }
 
   ngOnInit(): void {
