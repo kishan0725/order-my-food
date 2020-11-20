@@ -12,12 +12,17 @@ Live Demo: http://order-my-food-online.s3-website-us-east-1.amazonaws.com/
 - **Searching - We can search for hotel names, cuisines, location, etc**
 ![image](https://user-images.githubusercontent.com/36665975/99675651-78cf0f80-2a9d-11eb-8b42-9afc7dfb4efb.png)
 
-
 - **Sorting - We can sort them by Name(default), Reviews and Ratings**
 ![image](https://user-images.githubusercontent.com/36665975/99675703-8c7a7600-2a9d-11eb-9c31-038b08be0e0a.png)
 
 - **Individual Hotel Page having list of menus - we can add the menus to the cart**
 ![image](https://user-images.githubusercontent.com/36665975/99675906-cba8c700-2a9d-11eb-826a-9fb1de46bfaa.png)
+
+- **Adding menus to the basket/cart**
+![image](https://user-images.githubusercontent.com/36665975/99823219-1ef04780-2b7a-11eb-83aa-81936e14539f.png)
+
+- **Adding redundant menu to the basket/cart**
+![image](https://user-images.githubusercontent.com/36665975/99823276-32031780-2b7a-11eb-9224-4b30a280ba83.png)
 
 - **Basket of menus**
 ![image](https://user-images.githubusercontent.com/36665975/99675945-dd8a6a00-2a9d-11eb-9c74-0dc3169561b7.png)
