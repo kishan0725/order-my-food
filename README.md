@@ -1,5 +1,30 @@
 # OrderMyFood
 
+An online food ordering system developed using Angular 10 and Material UI.
+  
+Live Demo: http://order-my-food-online.s3-website-us-east-1.amazonaws.com/
+
+## Screenshots
+
+- **Home Page having list of hotels**
+![image](https://user-images.githubusercontent.com/36665975/99675575-61902200-2a9d-11eb-94b4-a8f753e4e5b7.png)
+
+- **Searching - We can search for hotel names, cuisines, location, etc**
+![image](https://user-images.githubusercontent.com/36665975/99675651-78cf0f80-2a9d-11eb-8b42-9afc7dfb4efb.png)
+
+
+- **Sorting - We can sort them by Name(default), Reviews and Ratings**
+![image](https://user-images.githubusercontent.com/36665975/99675703-8c7a7600-2a9d-11eb-9c31-038b08be0e0a.png)
+
+- **Individual Hotel Page having list of menus - we can add the menus to the cart**
+![image](https://user-images.githubusercontent.com/36665975/99675906-cba8c700-2a9d-11eb-826a-9fb1de46bfaa.png)
+
+- **Basket of menus**
+![image](https://user-images.githubusercontent.com/36665975/99675945-dd8a6a00-2a9d-11eb-9c74-0dc3169561b7.png)
+
+- **Payment acknowledgement**
+![image](https://user-images.githubusercontent.com/36665975/99676012-f2ff9400-2a9d-11eb-88e6-2d00a8ac8661.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
 
 ## Development server
