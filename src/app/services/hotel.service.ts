@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { IHotel } from '../models/hotel';
 import { catchError } from 'rxjs/operators';
+import { ICartItem } from '../models/cart-item';
 
 @Injectable({
   providedIn: 'root'
@@ -10,30 +11,25 @@ import { catchError } from 'rxjs/operators';
 export class HotelService {
 
   private url: string = '/assets/api/data.json';
-
   public hasUserName = false;
-
   public userName = '';
-
-  customError = {
+  public cartItems = [];
+  public customError = {
     status: 500,
     message: 'Sorry! Something went wrong :('
   }
 
-  hasUserNameChange: Subject<boolean> = new Subject<boolean>();
-
   userNameChange: Subject<string> = new Subject<string>();
 
+  cartItemsChange: Subject<ICartItem[]> = new Subject<ICartItem[]>();
+
   constructor(private httpClient: HttpClient) {
-
-    this.hasUserNameChange.subscribe((value) => {
-      this.hasUserName = value;
+    this.cartItemsChange.subscribe((value: ICartItem[]) => {
+      this.cartItems.push(value);
     });
-
     this.userNameChange.subscribe((name) => {
       this.userName = name;
     });
-
   }
 
   public getHotelsList = (): Observable<IHotel[]> => {
@@ -45,8 +41,11 @@ export class HotelService {
   }
 
   public setUserName = (name) => {
-    this.hasUserNameChange.next(!this.hasUserName);
     this.userNameChange.next(name);
+  }
+
+  public setCartItem = (item) => {
+    this.cartItemsChange.next(item);
   }
 
 }

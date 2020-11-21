@@ -34,3 +34,7 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
     background: #450e4e;
 }
+
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #9c27b0;
+}

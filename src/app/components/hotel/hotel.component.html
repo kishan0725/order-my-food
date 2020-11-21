@@ -1,5 +1,8 @@
 <app-nav-bar [userName]="userName"></app-nav-bar>
 
+<div [class]="{'loader-center':!hotel}">
+    <mat-spinner *ngIf="!hotel"></mat-spinner>
+</div>
 <div class="hotel-container">
     <mat-sidenav-container>
         <mat-sidenav-content>
@@ -13,7 +16,7 @@
                         </div>
                     </div>
                     <mat-icon matBadge="{{cartItems.length}}" matBadgeColor="warn" class="shopping-cart" (click)="sidenav.toggle(); scrollTop()" *ngIf="cartItems.length">shopping_cart</mat-icon>
-                    <mat-icon class="shopping-cart" (click)="sidenav.toggle(); scrollTop()" *ngIf="!cartItems.length">shopping_cart</mat-icon>
+                    <mat-icon class="shopping-cart" (click)="toggleSideNav()" *ngIf="!cartItems.length">shopping_cart</mat-icon>
                 </div>
                 <div class="hotel-menus">
                     <app-menu-item [hotel]="hotel" (addToMyCartEvent)="addToMyCart($event)" 
@@ -22,7 +25,7 @@
                 </div>
             </div>
         </mat-sidenav-content>
-        <mat-sidenav #sidenav [mode]="toggleMode" position="end">
+        <mat-sidenav #sidenav [mode]="toggleMode" position="end" [opened]="false">
             <div class="price-container" *ngIf="!cartItems.length">
                 <h3>My Basket</h3>
                 <p class="empty-basket">

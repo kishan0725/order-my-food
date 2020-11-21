@@ -9,9 +9,11 @@
     </div>
 
     
+    
     <div class="hotel-cards" [class]="{'empty-search': !hotels.length}" *ngIf="!hotels.length">
         <div class="empty-hotel">
-            <h3>
+            <mat-spinner *ngIf="!hotelsConstant.length"></mat-spinner>
+            <h3 *ngIf="hotelsConstant.length">
                 No Hotels found!
             </h3>
         </div>

@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { HotelService } from '../../services/hotel.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { MatSidenav } from '@angular/material/sidenav';
+import { SideNavService } from '../../services/side-nav.service';
 
 @Component({
   selector: 'app-hotel',
   templateUrl: './hotel.component.html',
   styleUrls: ['./hotel.component.scss']
 })
-export class HotelComponent implements OnInit {
+export class HotelComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('sidenav', {static: true}) public sidenav: MatSidenav;
 
   public hotels = [];
   public hotel;
@@ -17,8 +21,10 @@ export class HotelComponent implements OnInit {
   public isFetched: boolean = false;
   public toggleMode = "over";
   public userName = '';
+  public isSideNavShowing: boolean = false;
 
-  constructor(private _hotelService: HotelService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private _hotelService: HotelService, private route: ActivatedRoute, 
+    private router: Router, private _sidenavService: SideNavService) { }
 
   scrollTop = () => {
     document.body.scrollTop = 0; // For Safari
@@ -35,53 +41,69 @@ export class HotelComponent implements OnInit {
   }
 
   addToMyCart = (menu) => {
-    const cartItem = {
+    const newItem = {
       "id": menu.id,
       "name": menu.name,
       "price": menu.price,
       "quantity": 1
     }
 
-    this.cartItems.push(cartItem);
-
-    if (this.hasDuplicateItem()) {
-      this.ItemAlreadyExistModal(cartItem);
-      this.removeDuplicateItem();
+    if(this.isItemAlreadyExist(newItem)) {
+      this.itemAlreadyExistModal(newItem);
     }
     else {
-      this.ItemAddedModal(menu);
+      this.addItemToMyCart(newItem);
+      this.itemAddedModal(newItem);
       this.calculateAmount();
     }
   }
 
-  hasDuplicateItem = () => {
-    let itemArray = this.cartItems.map(function(item){ return item.id });
-    let isDuplicate = itemArray.some(function(item, idx){ 
-      return itemArray.indexOf(item) != idx 
-    });
-    return isDuplicate;
+  addItemToMyCart = (newItem) => {
+    this._hotelService.setCartItem(newItem);
+    this.cartItems = this._hotelService.cartItems;
   }
 
-  removeDuplicateItem = () => {
-    this.cartItems = this.cartItems.filter((v,i,a) => a.findIndex(t=>(t.id === v.id))===i);
+  isItemAlreadyExist = (newItem) => {
+    return this._hotelService.cartItems.find((cartItem) => cartItem.id == newItem.id);
   }
 
-  ItemAddedModal = (menu) => {
+  itemAddedModal = (newItem) => {
     Swal.fire({
       icon: 'success',
-      title: `${menu.name} added to your basket!`,
-      text: "Click on the basket icon at the top of the page to view your basket items.",
+      title: `${newItem.name} added to your basket!`,
+      text: "Click on 'View My Basket' button below to view your basket or click on the basket icon at the top of the page",
       showConfirmButton: true,
-      confirmButtonColor: '#9c27b0'
+      showCancelButton: true,
+      confirmButtonColor: '#9c27b0',
+      confirmButtonText: 'View My Basket',
+      cancelButtonText: 'Close',
+      cancelButtonColor: '#e23c3c'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.toggleSideNav();
+      }
     });
   }
 
-  ItemAlreadyExistModal = (menu) => {
+  toggleSideNav = () => {
+    this.scrollTop();
+    this._sidenavService.toggle();
+  }
+
+  itemAlreadyExistModal = (newItem) => {
     Swal.fire({
       icon: 'warning',
-      title: `${menu.name} already exist in your basket!`,
+      title: `${newItem.name} is already exist in your basket!`,
       showConfirmButton: true,
-      confirmButtonColor: '#9c27b0'
+      showCancelButton: true,
+      confirmButtonColor: '#9c27b0',
+      confirmButtonText: 'View My Basket',
+      cancelButtonText: 'Close',
+      cancelButtonColor: '#e23c3c'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.toggleSideNav();
+      }
     });
   }
 
@@ -137,6 +159,10 @@ export class HotelComponent implements OnInit {
     })
   }
 
+  ngAfterViewInit(): void {
+    this._sidenavService.setSidenav(this.sidenav);
+  }
+
   ngOnInit(): void {
     this.scrollTop();
     this._hotelService.getHotelsList().subscribe((data) => {
@@ -147,6 +173,8 @@ export class HotelComponent implements OnInit {
     });
 
     this.userName = this._hotelService.userName;
+    this.cartItems = this._hotelService.cartItems;
+
     if(!this.userName) {
       this.router.navigateByUrl("/hotels");
     }

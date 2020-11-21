@@ -98,7 +98,7 @@ export class HotelsComponent implements OnInit {
         this.hotelsConstant = this.hotels = data;
         this.sortHotels(this.selectedValue);
         this.userName = this._hotelService.userName;
-        if(!this._hotelService.hasUserName) {
+        if(!this._hotelService.userName) {
           this.inputName();
         }
       },
