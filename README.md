@@ -19,10 +19,10 @@ Live Demo: http://order-my-food-online.s3-website-us-east-1.amazonaws.com/
 ![image](https://user-images.githubusercontent.com/36665975/99675906-cba8c700-2a9d-11eb-826a-9fb1de46bfaa.png)
 
 - **Adding menus to the basket/cart**
-![image](https://user-images.githubusercontent.com/36665975/99823219-1ef04780-2b7a-11eb-83aa-81936e14539f.png)
+![image](https://user-images.githubusercontent.com/36665975/99878070-dfccff80-2c28-11eb-8816-f287bf9f00b0.png)
 
 - **Adding redundant menu to the basket/cart**
-![image](https://user-images.githubusercontent.com/36665975/99823276-32031780-2b7a-11eb-9224-4b30a280ba83.png)
+![image](https://user-images.githubusercontent.com/36665975/99878080-ece9ee80-2c28-11eb-80ec-b30e1dde6683.png)
 
 - **Basket of menus**
 ![image](https://user-images.githubusercontent.com/36665975/99675945-dd8a6a00-2a9d-11eb-9c74-0dc3169561b7.png)
