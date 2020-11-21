@@ -48,4 +48,8 @@ export class HotelService {
     this.cartItemsChange.next(item);
   }
 
+  public removeCartItem = (item) => {
+    this.cartItems = this.cartItems.filter((menu) => menu.id != item.id);
+  }
+
 }

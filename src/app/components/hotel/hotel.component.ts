@@ -108,7 +108,8 @@ export class HotelComponent implements OnInit, AfterViewInit {
   }
 
   removeItem = (cartItem) => {
-    this.cartItems = this.cartItems.filter((menu) => menu.id != cartItem.id);
+    this._hotelService.removeCartItem(cartItem);
+    this.cartItems = this._hotelService.cartItems;
     this.calculateAmount();
   }
 
