@@ -65,6 +65,10 @@
             width: 100%;
             app-cart-item {           
                 width: 90%;
+                max-height: 85vh;
+                overflow-y: auto;
+                overflow-x: hidden;
+                padding-right: 10px;
             }
             .amount {
                 margin-top: 5%;

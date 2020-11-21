@@ -175,6 +175,7 @@ export class HotelComponent implements OnInit, AfterViewInit {
 
     this.userName = this._hotelService.userName;
     this.cartItems = this._hotelService.cartItems;
+    this.calculateAmount();
 
     if(!this.userName) {
       this.router.navigateByUrl("/hotels");
