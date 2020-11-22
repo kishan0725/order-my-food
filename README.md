@@ -16,19 +16,19 @@ Live Demo: http://order-my-food-online.s3-website-us-east-1.amazonaws.com/
 ![image](https://user-images.githubusercontent.com/36665975/99675703-8c7a7600-2a9d-11eb-9c31-038b08be0e0a.png)
 
 - **Individual Hotel Page having list of menus - we can add the menus to the cart**
-![image](https://user-images.githubusercontent.com/36665975/99675906-cba8c700-2a9d-11eb-826a-9fb1de46bfaa.png)
+![image](https://user-images.githubusercontent.com/36665975/99896454-c2467700-2cb6-11eb-9280-d253339afa64.png)
 
 - **Adding menus to the basket/cart**
-![image](https://user-images.githubusercontent.com/36665975/99878070-dfccff80-2c28-11eb-8816-f287bf9f00b0.png)
+![image](https://user-images.githubusercontent.com/36665975/99896466-d5594700-2cb6-11eb-92e3-6acadfaae6d5.png)
 
 - **Adding redundant menu to the basket/cart**
-![image](https://user-images.githubusercontent.com/36665975/99878080-ece9ee80-2c28-11eb-80ec-b30e1dde6683.png)
+![image](https://user-images.githubusercontent.com/36665975/99896471-e43ff980-2cb6-11eb-97a5-c57a59aa8553.png)
 
 - **Basket of menus**
-![image](https://user-images.githubusercontent.com/36665975/99675945-dd8a6a00-2a9d-11eb-9c74-0dc3169561b7.png)
+![image](https://user-images.githubusercontent.com/36665975/99896477-f7eb6000-2cb6-11eb-97a7-7752c9d11800.png)
 
 - **Payment acknowledgement**
-![image](https://user-images.githubusercontent.com/36665975/99676012-f2ff9400-2a9d-11eb-88e6-2d00a8ac8661.png)
+![image](https://user-images.githubusercontent.com/36665975/99896485-09346c80-2cb7-11eb-96c0-c0a163b4d78f.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
 
