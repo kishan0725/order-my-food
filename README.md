@@ -25,10 +25,10 @@ Live Demo: http://order-my-food-online.s3-website-us-east-1.amazonaws.com/
 ![image](https://user-images.githubusercontent.com/36665975/99896471-e43ff980-2cb6-11eb-97a5-c57a59aa8553.png)
 
 - **Basket of menus**
-![image](https://user-images.githubusercontent.com/36665975/99896477-f7eb6000-2cb6-11eb-97a7-7752c9d11800.png)
+![image](https://user-images.githubusercontent.com/36665975/99896533-77792f00-2cb7-11eb-8211-ff4b054d800e.png)
 
 - **Payment acknowledgement**
-![image](https://user-images.githubusercontent.com/36665975/99896485-09346c80-2cb7-11eb-96c0-c0a163b4d78f.png)
+![image](https://user-images.githubusercontent.com/36665975/99896541-7fd16a00-2cb7-11eb-8157-ebcbce443bd8.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
 
