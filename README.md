@@ -21,7 +21,7 @@ Live Demo: http://order-my-food-online.s3-website-us-east-1.amazonaws.com/
 - **Adding menus to the basket/cart**
 ![image](https://user-images.githubusercontent.com/36665975/99896466-d5594700-2cb6-11eb-92e3-6acadfaae6d5.png)
 
-- **Adding redundant menu to the basket/cart**
+- **Adding duplicate menu to the basket/cart**
 ![image](https://user-images.githubusercontent.com/36665975/99896471-e43ff980-2cb6-11eb-97a5-c57a59aa8553.png)
 
 - **Basket of menus**
