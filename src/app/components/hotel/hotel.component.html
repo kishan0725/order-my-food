@@ -1,4 +1,4 @@
-<app-nav-bar [userName]="userName"></app-nav-bar>
+<!-- <app-nav-bar [userName]="userName"></app-nav-bar> -->
 
 <div [class]="{'loader-center':!hotel}">
     <mat-spinner *ngIf="!hotel"></mat-spinner>
@@ -6,6 +6,7 @@
 <div class="hotel-container">
     <mat-sidenav-container>
         <mat-sidenav-content>
+            <app-nav-bar [userName]="userName"></app-nav-bar>
             <div class="menu-container" *ngIf="hotel">
                 <div class="hotel-meta">
                     <div class="hotel-meta-data">
@@ -37,11 +38,12 @@
                 <div class="cart-items">
                     <app-cart-item [cartItems]="cartItems" (removeQuantityEvent)="removeQuantity($event)"
                     (addQuantityEvent)="addQuantity($event)" (removeItemEvent)="removeItem($event)"></app-cart-item>
-                    <div class="amount" *ngIf="cartItems.length"> Bill Amount: {{'\u20B9'}} {{totalAmount}}</div>
-                    <button mat-raised-button color="warn" class="calculate-menu" *ngIf="cartItems.length && totalAmount" (click)="openPaymentMethod()">
-                        Pay Bill
-                    </button>
+                    
                 </div>
+                <div class="amount" *ngIf="cartItems.length"> Bill Amount: {{'\u20B9'}} {{totalAmount}}</div>
+                <button mat-raised-button color="warn" class="calculate-menu" *ngIf="cartItems.length && totalAmount" (click)="openPaymentMethod()">
+                    Pay Bill
+                </button>
             </div>
         </mat-sidenav>
     </mat-sidenav-container>
